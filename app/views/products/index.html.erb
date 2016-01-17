@@ -1,11 +1,27 @@
-<div class="col-lg-12">
-  <h1>Welcome to the iPhone store homepage!</h1>
-  <p>Browse through our list of products by selecting the <a href="/products.html">'Products'</a> link in the navigation bar.</p>
-</div>
-
-<div class="col-lg-12">
-  <h3>Check out our best seller! The <%= @product.name %></h3>
-    <div class="center">
-      <img src="<%= @product.image %>">
+<% @products.each do |product| %>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <a href="/products/<%= product.id %>"><img src="<%= product.image %>"></a>
     </div>
-</div>
+
+    <div class="col-md-8" product_details>
+      <div class="row">
+        <!-- <h2><a href="/products/<%= product.id %>"><%= product.name %></a></h2> -->
+        <h2><%= link_to product.name, "/products/#{product.id}" %></h2>
+      </div> 
+
+      <div class="row">
+        <%= product.price %>
+        <button class="btn btn-default" type="submit">Buy Now!</button>
+      </div> 
+      <div class="row">
+        <%= product.description %>
+      </div>
+      <div class="row">
+        <a data-confirm="Are you sure?" data-method="delete" href="/products/<%= product.id %>" rel="nofollow" class="btn btn-danger">Delete</a>
+      </div>  
+    </div> 
+  </div>
+
+<% end %>
