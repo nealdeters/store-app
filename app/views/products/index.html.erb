@@ -2,7 +2,7 @@
   
   <div class="row">
     <div class="col-md-4">
-      <a href="/products/<%= product.id %>"><img src="<%= product.image %>"></a>
+      <a href="/products/<%= product.id %>"><img src="<%= product.image %>" class="img-thumbnail"></a>
     </div>
 
     <div class="col-md-8" product_details>
@@ -17,10 +17,7 @@
       </div> 
       <div class="row">
         <%= product.description %>
-      </div>
-      <div class="row">
-        <a data-confirm="Are you sure?" data-method="delete" href="/products/<%= product.id %>" rel="nofollow" class="btn btn-danger">Delete</a>
-      </div>  
+      </div> 
     </div> 
   </div>
 

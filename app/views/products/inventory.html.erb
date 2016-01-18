@@ -1,0 +1,26 @@
+<table class="inventory-table">
+  <tr>
+    <th>Product ID</th>
+    <th>Product Name</th>
+    <th>Product Price</th>
+  </tr>
+<% @products.each do |product| %>
+  <tr>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td><%= link_to "Show", "/products/#{product.id}", class: "btn btn-default" %></td>
+          <td><a href="/products/<%= product.id %>/edit" class="btn btn-default">Edit</a></td>
+          <td><a data-confirm="Are you sure?" data-method="delete" href="/products/<%= product.id %>" class="btn btn-danger">Delete</a></td>
+        </div>  
+      </div> 
+    </div>
+  </tr>
+
+<% end %>
+</table>
+
+<a class="btn btn-default" href="/products/new">Create New Product</a>

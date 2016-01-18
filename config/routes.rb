@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get '/' => 'products#home'
   get '/products' => 'products#index'
+  get '/inventory' => 'products#inventory'
 
   get '/products/new' => 'products#new'
   post '/products' => 'products#create'

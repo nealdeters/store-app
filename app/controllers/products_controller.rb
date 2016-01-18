@@ -8,6 +8,10 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def inventory
+    @products = Product.all
+  end
+
   def new
     
   end

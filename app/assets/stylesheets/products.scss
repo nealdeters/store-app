@@ -12,3 +12,10 @@ body {
   margin: auto;
   width: 500px;
 }
+
+.inventory-table {
+  th, td {
+    padding: 15px;
+    text-align: left;
+  }
+}
