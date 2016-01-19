@@ -7,16 +7,24 @@
 
     <div class="col-md-8" product_details>
       <div class="row">
+        <div class="col-md-12">
         <!-- <h2><a href="/products/<%= product.id %>"><%= product.name %></a></h2> -->
         <h2><%= link_to product.name, "/products/#{product.id}" %></h2>
+        </div>
       </div> 
 
       <div class="row">
-        <%= product.price %>
-        <button class="btn btn-default" type="submit">Buy Now!</button>
+        <div class="col-md-2">
+          <button class="btn btn-default" type="submit">Buy Now!</button>
+        </div>
+        <div class="col-md-10">
+          <%= product.price %>
+        </div>
       </div> 
       <div class="row">
-        <%= product.description %>
+        <div class="col-md-12">
+          <%= product.description %>
+        </div>
       </div> 
     </div> 
   </div>

@@ -1,20 +1,27 @@
-<table>
-  <tr>
-    <td class="col-md-4">
-      <img src="<%= @product.image %>" class="img-thumbnail">
-    </td>
+<div class="row">
+  <div class="col-md-4">
+    <a href="/products/<%= @product.id %>"><img src="<%= @product.image %>" class="img-thumbnail"></a>
+  </div>
 
-    <td class="col-md-8">
-      <div class="row" class="product_details">
-        <%= @product.name %>
-      </div> 
-      <div class="row">
-        <%= @product.price %>
+  <div class="col-md-8" product_details>
+    <div class="row">
+      <div class="col-md-12">
+      <h2><%= link_to @product.name, "/products/#{@product.id}" %></h2>
+      </div>
+    </div> 
+
+    <div class="row">
+      <div class="col-md-2">
         <button class="btn btn-default" type="submit">Buy Now!</button>
-      </div> 
-      <div class="row">
+      </div>
+      <div class="col-md-10">
+        <%= @product.price %>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-md-12">
         <%= @product.description %>
-      </div> 
-    </td> 
-  </tr>
-</table>
+      </div>
+    </div> 
+  </div> 
+</div>

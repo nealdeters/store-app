@@ -18,6 +18,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create({name: params[:name], image: params[:image], description: params[:description], price: params[:price]})
+
+    flash[:success] = "New Product Created"
+
+    redirect_to "/products"
   end
 
   def show
@@ -33,12 +37,20 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     @product.update({name: params[:name], image: params[:image], description: params[:description], price: params[:price]})
+
+    flash[:info] = "Product Updated"
+
+    redirect_to "/products/#{@product.id}"
   end
 
   def destroy
     @product = Product.find(params[:id])
 
     @product.destroy
+
+    flash[:danger] = "Product Deleted"
+
+    redirect_to '/'
   end
 
 end
