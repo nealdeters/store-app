@@ -12,25 +12,31 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-8 col-xs-8">
+          <div class="col-md-8 col-xs-8 silver-border">
             <h3><%= @product.name %></h3>
+            <span id="<%= @product.stock_class %>"><%= @product.in_stock? %></span>
             <br>
-            <p><%= @product.description %></p>
+            <br>
+            <p id="description"><%= @product.description %></p>
           </div>
-          <div class="col-md-4 col-xs-4 price">
-            <table class="table table-bordered table-condensed">
+          <div class="col-md-4 col-xs-4">
+            <table id="price_table">
               <tr>
-                <td><h4><labeL>Price: $<%= @product.cost %></label></h4></td>
+                <td><strong>Price: </strong></td>
+                <td>$<%= @product.cost %></td>
               </tr>
               <tr>
-                <td><h4><labeL>Tax: $<%= @product.sale_tax %></label></h4></td>
+                <td><strong>Tax: </strong></td>
+                <td>$<%= @product.sale_tax %></td>
               </tr>
               <tr>
-                <td><h4><labeL>Total: $<%= @product.total_cost %></label></h4></td>
+                <td><strong>Total: </strong></td>
+                <td>$<%= @product.total_cost %></td>
               </tr>
             </table>
           </div>
         </div>
+        <br>
         <div class="row">
           <div class="col-md-12">
             <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>

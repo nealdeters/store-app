@@ -26,7 +26,7 @@ body {
 .inventory-table {
   th, td {
     padding: 15px;
-    text-align: left;
+    text-align: center;
   }
 }
 
@@ -49,4 +49,38 @@ a:hover.product-link{
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+#in_stock {
+  color: green;
+  font-size: 16px;
+}
+
+#out_of_stock {
+  color: red;
+  font-size: 16px;
+}
+
+#description {
+  height: 150px;
+}
+
+.silver-border {
+  border: 1px solid #e7e7e7;
+}
+
+#price_table {
+  border-style: none;
+  td {
+    padding: 10px;
+  }
+  td:nth-child(even) {
+    float: right;
+  }
+  td:nth-child(odd) {
+    background-color: #f8f8f8;
+  }
+  tr:last-child {
+    border-top: solid 1px black;
+  }
 }

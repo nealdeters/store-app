@@ -22,4 +22,20 @@ class Product < ActiveRecord::Base
     "#{@total}"
   end
 
+  def in_stock?
+    if inventory == 0 || inventory == nil
+      "Out of stock."
+    else
+      "In Stock."
+    end
+  end
+
+  def stock_class
+    if inventory == 0 || inventory == nil
+      "out_of_stock"
+    else
+      "in_stock"
+    end
+  end
+
 end

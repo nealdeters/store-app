@@ -12,15 +12,20 @@
   </div>
 
   <div>
-    <%= label_tag :description %>
-    <%= text_field_tag :description %>
-  </div>
-
-  <div>
     <%= label_tag :price %>
     <%= text_field_tag :price %>
   </div>
 
-  <%= submit_tag "Create Product" %>
+  <div>
+    <%= label_tag :inventory %>
+    <%= text_field_tag :inventory %>
+  </div>
+
+  <div>
+    <%= label_tag :description %>
+    <%= text_area_tag :description %>
+  </div>
+
+  <%= submit_tag "Create Product", class: "btn btn-default" %>
 
 <% end %>

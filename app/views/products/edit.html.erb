@@ -7,20 +7,25 @@
   </div>
 
   <div>
+    <%= label_tag :price %>
+    <%= text_field_tag :price, @product.price %>
+  </div>
+
+  <div>
     <%= label_tag :image %>
     <%= text_field_tag :image, @product.image %>
   </div>
 
   <div>
-    <%= label_tag :description %>
-    <%= text_field_tag :description, @product.description %>
+    <%= label_tag :inventory %>
+    <%= text_field_tag :inventory, @product.inventory %>
   </div>
 
   <div>
-    <%= label_tag :price %>
-    <%= text_field_tag :price, @product.price %>
+    <%= label_tag :description %>
+    <%= text_area_tag :description, @product.description %>
   </div>
 
-  <%= submit_tag "Update" %>
+  <%= submit_tag "Update", class: "btn btn-default" %>
 
 <% end %>
