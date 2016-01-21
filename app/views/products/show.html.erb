@@ -5,15 +5,32 @@
   <div class="col-sm-6 col-md-8">
       <div class="caption">
         <div class="row">
-          <div class="col-md-8 col-xs-8">
-            <h3><%= @product.name %></h3>
-          </div>
-          <div class="col-md-4 col-xs-4 price">
+          <div class="col-md-12 col-xs-12">
             <h3>
-            <label><%= @product.price %></label></h3>
+              <span id="sale_message" class="label label-info"><%= @product.sale_message %></span>
+            </h3>
           </div>
         </div>
-        <p><%= @product.description %></p>
+        <div class="row">
+          <div class="col-md-8 col-xs-8">
+            <h3><%= @product.name %></h3>
+            <br>
+            <p><%= @product.description %></p>
+          </div>
+          <div class="col-md-4 col-xs-4 price">
+            <table class="table table-bordered table-condensed">
+              <tr>
+                <td><h4><labeL>Price: $<%= @product.cost %></label></h4></td>
+              </tr>
+              <tr>
+                <td><h4><labeL>Tax: $<%= @product.sale_tax %></label></h4></td>
+              </tr>
+              <tr>
+                <td><h4><labeL>Total: $<%= @product.total_cost %></label></h4></td>
+              </tr>
+            </table>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-12">
             <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
