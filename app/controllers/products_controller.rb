@@ -5,7 +5,32 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    
+    if params[:filter]
+      if params[:filter] == "lowest"
+        @products = Product.order(params[:price])
+      elsif params[:filter] == "highest"
+        @products = Product.order(price: :desc)
+      elsif params[:filter] == "discount"
+        @products = Product.where("price < ?", 200)
+      elsif params[:filter] == "random"
+        @product = Product.all.sample
+        redirect_to "/products/#{@product.id}"
+        # render :show
+      end
+    else
+      @products = Product.all 
+    end
+
+    # @products = Product.all
+    # if params[:sort] && params[:sort_order]
+    #   @product = Product.order(params[:sort]) => 
+    # end
+
+    # if params[:discount]
+    #   @products = @products.where("price < ?", params[:discount])
+    # end
+
   end
 
   def inventory
@@ -40,7 +65,8 @@ class ProductsController < ApplicationController
 
     flash[:info] = "Product Updated"
 
-    redirect_to "/products/#{@product.id}"
+    # redirect_to "/products/#{@product.id}"
+    render :show
   end
 
   def destroy
@@ -51,6 +77,12 @@ class ProductsController < ApplicationController
     flash[:danger] = "Product Deleted"
 
     redirect_to '/'
+  end
+
+  def search
+    @products = Product.where("name LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+
+    render :index
   end
 
 end

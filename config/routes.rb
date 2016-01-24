@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   delete '/products/:id' => 'products#destroy'
 
+  post '/search' => 'products#search'
+
 end

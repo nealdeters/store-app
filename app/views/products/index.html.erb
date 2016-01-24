@@ -1,4 +1,22 @@
 <div class="col-md-12">
+
+<!-- Extra small button group -->
+<div class="btn-group">
+  <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filters <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="/products?filter=lowest">Lowest to Highest</a>
+    </li>
+    <li><a href="/products?filter=highest">Highest to Lowest</a>
+    </li>
+    <li><a href="/products?filter=discount">Discount</a>
+    </li>
+  </ul>
+</div>
+<br>
+<br>
+
 <% @products.each do |product| %>
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail" >
