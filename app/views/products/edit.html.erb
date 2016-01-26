@@ -12,11 +12,6 @@
   </div>
 
   <div>
-    <%= label_tag :image %>
-    <%= text_field_tag :image, @product.image %>
-  </div>
-
-  <div>
     <%= label_tag :inventory %>
     <%= text_field_tag :inventory, @product.inventory %>
   </div>
@@ -25,6 +20,18 @@
     <%= label_tag :description %>
     <%= text_area_tag :description, @product.description %>
   </div>
+
+  <div>
+    <%= label_tag :image %>
+    
+    <% @product.images.each_with_index do |image, index| %>  
+      <img src="<%= image.image_url %>" class="img-responsive product_edit_thumbnail">
+    <% end %>
+
+    <a href="/images/<%= @image.id %>/edit" class="btn btn-default btn-sm">Edit Images</a>
+
+  </div>
+  <br>
 
   <%= submit_tag "Update", class: "btn btn-default" %>
 

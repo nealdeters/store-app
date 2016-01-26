@@ -8,7 +8,7 @@ class SuppliersController < ApplicationController
   end
 
   def create
-    @supplier = Supplier.create({name: params[:name], image: params[:image], description: params[:description], price: params[:price], inventory: params[:inventory]})
+    @supplier = Supplier.create({name: params[:name], email: params[:email], phone: params[:phone]})
 
     flash[:success] = "New Supplier Created"
 
@@ -22,12 +22,11 @@ class SuppliersController < ApplicationController
   def update
     @supplier = Supplier.find(params[:id])
 
-    @supplier.update({name: params[:name], image: params[:image], description: params[:description], price: params[:price], inventory: params[:inventory]})
+    @supplier.update({name: params[:name], email: params[:email], phone: params[:phone]})
 
     flash[:info] = "Supplier Updated"
 
-    # redirect_to "/products/#{@product.id}"
-    render :show
+    render :edit
   end
 
   def destroy
@@ -37,6 +36,6 @@ class SuppliersController < ApplicationController
 
     flash[:danger] = "Supplier Deleted"
 
-    redirect_to '/'
+    redirect_to '/suppliers'
   end
 end

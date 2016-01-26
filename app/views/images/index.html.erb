@@ -1,0 +1,25 @@
+<table class="inventory-table">
+  <tr>
+    <th>Image ID</th>
+    <th>Product ID</th>
+    <th>Image URL</th>
+  </tr>
+<% @images.each do |image| %>
+  <tr>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <td><%= image.id %></td>
+          <td><%= image.product_id %></td>
+          <td><%= image.image_url %></td>
+          <td><a href="/images/<%= image.id %>/edit" class="btn btn-default">Edit</a></td>
+          <td><a data-confirm="Are you sure?" data-method="delete" href="/images/<%= image.id %>" class="btn btn-danger">Delete</a></td>
+        </div>  
+      </div> 
+    </div>
+  </tr>
+
+<% end %>
+</table>
+
+<a class="btn btn-default" href="/images/new">Create New image</a>
