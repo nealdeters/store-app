@@ -6,11 +6,17 @@
     Filters <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <li><a href="/products?filter=lowest">Lowest to Highest</a>
+    <!-- <li><a href="/products?filter=lowest">Lowest to Highest</a>
     </li>
     <li><a href="/products?filter=highest">Highest to Lowest</a>
+    </li> -->
+    <li><a href="/products?filter=price&filter_order=asc">Lowest to Highest</a>
     </li>
-    <li><a href="/products?filter=discount">Discount</a>
+    <li><a href="/products?filter=price&filter_order=desc">Highest to Lowest</a>
+    </li>
+    <li><a href="/products?filter=sale">On Sale</a>
+    </li>
+    <li><a href="/products?discount=100">Discount</a>
     </li>
   </ul>
 </div>
@@ -21,6 +27,7 @@
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail" >
       <a href="/products/<%= product.id %>">
+        <%=raw product.out_of_stock_badge %>
         <img src="<%= product.image %>" class="img-responsive">
       </a>
       <div class="caption">
@@ -38,10 +45,10 @@
           </div>
         </div>
         <p id="description"><%= product.description %></p>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-12">
-            <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
-        </div>
+            <a href="#" class="btn btn-success btn-product <%= product.buy_out_of_stock_class %>" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
+        </div> -->
 
         <p> </p>
       </div>

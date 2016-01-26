@@ -1,9 +1,16 @@
 class Product < ActiveRecord::Base
+  
+  belongs_to :supplier
+  has_many :images
+
+  def supplier_name
+    supplier.name
+  end
 
   def sale_message
-    if price.to_i < 2
+    if price.to_i < 100
       "Discount item!"
-    else 
+    elsif price.to_i < 200
       "On Sale!"
     end 
   end
@@ -35,6 +42,24 @@ class Product < ActiveRecord::Base
       "out_of_stock"
     else
       "in_stock"
+    end
+  end
+
+  def buy_out_of_stock_class
+    if inventory == 0 || inventory == nil
+      "disabled"
+    end
+  end
+
+  def out_of_stock_badge
+    if inventory == 0 || inventory == nil
+      '<span class="label label-danger out_of_stock-badge">SOLD OUT</span>'
+    end
+  end
+
+  def on_sale_badge
+    if price < 200
+      '<span class="label label-info on_sale-badge">ON SALE</span>'
     end
   end
 

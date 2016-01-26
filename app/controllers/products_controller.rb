@@ -6,30 +6,22 @@ class ProductsController < ApplicationController
 
   def index
     
-    if params[:filter]
-      if params[:filter] == "lowest"
-        @products = Product.order(params[:price])
-      elsif params[:filter] == "highest"
-        @products = Product.order(price: :desc)
-      elsif params[:filter] == "discount"
-        @products = Product.where("price < ?", 200)
-      elsif params[:filter] == "random"
-        @product = Product.all.sample
-        redirect_to "/products/#{@product.id}"
-        # render :show
-      end
-    else
-      @products = Product.all 
+    @products = Product.all
+
+    if params[:filter] && params[:filter_order]
+      @products = Product.order(params[:filter] => params[:filter_order])
     end
-
-    # @products = Product.all
-    # if params[:sort] && params[:sort_order]
-    #   @product = Product.order(params[:sort]) => 
-    # end
-
-    # if params[:discount]
-    #   @products = @products.where("price < ?", params[:discount])
-    # end
+    if params[:discount]
+      @products = @products.where("price < ?", params[:discount])
+    end
+    if params[:filter] == "sale"
+      @products = Product.where("price < ?", 200)
+    end
+    if params[:filter] == "random"
+      @product = Product.all.sample
+      # redirect_to "/products/#{@product.id}"
+      render :show
+    end
 
   end
 
@@ -52,6 +44,7 @@ class ProductsController < ApplicationController
   def show
     #@product = Product.find_by(id: params[:id])
     @product = Product.find(params[:id])
+
   end
 
   def edit

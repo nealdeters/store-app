@@ -84,3 +84,27 @@ a:hover.product-link{
     border-top: solid 1px black;
   }
 }
+
+.out_of_stock-badge{
+  position: absolute;
+  margin: auto;
+  right: -3px;
+  top: 20px;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  color: white;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.on_sale-badge{
+  position: absolute;
+  margin: auto;
+  right: -3px;
+  top: 20px;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  color: white;
+  padding: 5px 10px;
+  font-size: 20px;
+}
