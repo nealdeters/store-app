@@ -63,4 +63,12 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def get_the_first_image
+    if images.first
+      images.first.image_url
+    else
+      Image.first.url
+    end
+  end
+
 end

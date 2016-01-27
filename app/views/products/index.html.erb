@@ -28,7 +28,7 @@
     <div class="thumbnail" >
       <a href="/products/<%= product.id %>">
         <%=raw product.out_of_stock_badge %>
-        <img src="<%= product.images[0].image_url %>" class="img-responsive">
+        <img src="<%= product.get_the_first_image %>" class="img-responsive">
       </a>
       <div class="caption">
         <div class="row">

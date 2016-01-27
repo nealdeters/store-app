@@ -5,7 +5,6 @@
       <div id="image-carousel" class="carousel slide" data-ride="carousel">
 
       <% @product.images.each_with_index do |image, index| %>
-          
             <!-- Indicators -->
             <ol class="carousel-indicators">
               <li data-target="#image-carousel" data-slide-to="<%= index %>" class="active">
@@ -15,7 +14,7 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-              <div class="item <% if index == 0 %>active<% end %>"> 
+              <div class="item active"> 
                 <img src="<%= image.image_url %>" class="img-responsive">
                 <!-- <div class="carousel-caption">
                   ...

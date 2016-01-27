@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.create({image_url: params[:image_url]})
+    @image = Image.create({image_url: params[:image_url], product_id: params[:product_id]})
 
     flash[:success] = "New Image Created"
 
@@ -17,17 +17,18 @@ class ImagesController < ApplicationController
   end
 
   def show
-
+    @image = Image.find(params[:id])
   end
 
   def edit
     @image = Image.find(params[:id])
+    # @images = Product.find(:id).images
   end
 
   def update
     @image = Image.find(params[:id])
 
-    @image.update({image_url: params[:image_url]})
+    @image.update({image_url: params[:image_url], product_id: params[:product_id]})
 
     flash[:info] = "Image Updated"
 
@@ -41,7 +42,7 @@ class ImagesController < ApplicationController
 
     flash[:danger] = "Image Deleted"
 
-    redirect_to '/Images'
+    redirect_to '/images'
   end
 
 end

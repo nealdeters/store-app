@@ -34,7 +34,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create({name: params[:name], image: params[:image], description: params[:description], price: params[:price], inventory: params[:inventory]})
+    @product = Product.create({name: params[:name], description: params[:description], price: params[:price], supplier_id: params[:supplier][:supplier_id], inventory: params[:inventory], })
+
+    Image.create(image_url: params[:image], product_id: @product.id) if params[:image] != ""
 
     flash[:success] = "New Product Created"
 
@@ -50,13 +52,15 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
 
-    @image = Product.find(params[:id]).images.find(params[:id])
+    # @image = Product.find(params[:id]).images.find(params[:id])
   end
 
   def update
     @product = Product.find(params[:id])
 
-    @product.update({name: params[:name], image: params[:image], description: params[:description], price: params[:price], inventory: params[:inventory]})
+    @product.update({name: params[:name], description: params[:description], price: params[:price], inventory: params[:inventory]})
+
+    Image.update(image_url: params[:image][:image_url], product_id: @product.id)
 
     flash[:info] = "Product Updated"
 

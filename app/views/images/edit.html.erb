@@ -1,0 +1,22 @@
+<h1>Update Images</h1>
+
+<%= form_tag "/images/#{@image.id}", method: :patch do %>
+
+  <div>
+    <%= label_tag :image_url %>
+    <%= text_field_tag :image_url, @image.image_url %>
+  </div>
+
+  <div>
+    <%= label_tag :product_id %>
+    <%= text_field_tag :product_id, @image.product_id %>
+  </div>
+
+  <div>
+    <%= label_tag :image_thumbnail %>
+    <img src="<%= @image.image_url %>" class="img-responsive product_edit_thumbnail">
+  </div>
+
+  <%= submit_tag "Update", class: "btn btn-default" %>
+
+<% end %>
