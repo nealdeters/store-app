@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   post '/products' => 'products#create'
   post '/suppliers' => 'suppliers#create'
   post '/images' => 'images#create'
+  post '/orders' => 'orders#create'
 
   get '/products/:id' => 'products#show'
   get '/images/:id' => 'images#show'
+  get '/orders/:id' => 'orders#show'
 
   get '/products/:id/edit' => 'products#edit'
   get '/suppliers/:id/edit' => 'suppliers#edit'

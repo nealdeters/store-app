@@ -73,7 +73,22 @@
         <br>
         <div class="row">
           <div class="col-md-12">
-            <a href="#" class="btn btn-success <%= @product.buy_out_of_stock_class %>"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
+            <%= form_tag "/orders", method: :post do %>
+              <div>
+                <%= label_tag :product_id %>
+                <%= text_field_tag :product_id %>
+              </div>
+
+              <div>
+                <%= label_tag :quantity %>
+                <%= text_field_tag :quantity %>
+              </div>
+
+              <%= submit_tag "Buy", class: "btn btn-success #{@product.buy_out_of_stock_class}" %>
+
+            <% end %>
+
+            <!-- <a href="#" class=""><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div> -->
         </div>
     </div>
   </div>
