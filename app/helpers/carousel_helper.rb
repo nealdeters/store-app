@@ -1,5 +1,16 @@
 # app/helpers/carousel_helper.rb
 
+#EXAMPLE ON HOW TO CALL INTO VIEWS
+# class Apartment
+#   def image_urls
+#     # ...
+#   end
+# end
+
+# <% apartment = Apartment.new %>
+# # ...
+# <%= carousel_for(apartment.image_urls) %>
+
 module CarouselHelper
   def carousel_for(images)
     Carousel.new(self, images).html

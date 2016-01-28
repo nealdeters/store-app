@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   
   def home
-    @product = Product.first
+    @product = Product.first 
   end
 
   def index
