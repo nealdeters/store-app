@@ -17,7 +17,7 @@ class Product < ActiveRecord::Base
   end
 
   def cost
-    '%.2f' % price
+    price
   end
 
   def sale_tax

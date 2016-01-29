@@ -1,7 +1,37 @@
-Order #: <%= @order.id %>
-<br>
-User: <%= @order.user.email %>
-<br>
-Product ID: <%= @order.product_id %>
-<br>
-Quantity: <%= @order.quantity %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <h1>Order: #<%= @order.id %></h1>
+      <h4>User: <%= @order.user.email %></h4>
+      <h5>Your order has been received and is processing</h5>
+      <br>
+      <table id="price_table">
+        <tr>
+          <td><strong>Product ID: </strong></td>
+          <td><%= @order.product_id %></td>
+        </tr>
+        <tr>
+          <td><strong>Quantity: </strong></td>
+          <td><%= @order.quantity %></td>
+        </tr>
+        <tr>
+          <td><strong>Subtotal: </strong></td>
+          <td><%=number_to_currency( @order.subtotal )%></td>
+        </tr>
+        <tr>
+          <td><strong>Tax: </strong></td>
+          <td><%=number_to_currency( @order.tax )%></td>
+        </tr>
+        <tr>
+          <td><strong>Total: </strong></td>
+          <td><%=number_to_currency( @order.total )%></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <br>
+      <%= image_tag @order.product.images.first.image_url, class: "img-thumbnail" %>
+    </div>
+  </div>
+</div>
