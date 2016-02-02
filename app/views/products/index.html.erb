@@ -18,6 +18,10 @@
     </li>
     <li><a href="/products?discount=100">Discount</a>
     </li>
+    <% Category.all.each do |category| %>
+      <li><%= link_to category.name.titleize, "products?category=#{category.name}" %>
+    </li>
+    <% end %>
   </ul>
 </div>
 <br>

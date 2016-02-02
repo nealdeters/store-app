@@ -2,7 +2,9 @@ class Product < ActiveRecord::Base
   
   belongs_to :supplier
   has_many :images
-  has_many :orders
+  has_many :orders, through: :carted_products
+  has_many :categorized_products
+  has_many :categories, through: :categorized_products
 
   def supplier_name
     supplier.name

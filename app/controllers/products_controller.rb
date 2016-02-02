@@ -22,6 +22,9 @@ class ProductsController < ApplicationController
       # redirect_to "/products/#{@product.id}"
       render :show
     end
+    if params[:category]
+      @products = Category.find_by(name: params[:category]).products
+    end
 
   end
 

@@ -51,6 +51,15 @@
 
                 <h3><%= @product.name %></h3>
                 <h5>By: <%= @product.supplier_name %></h5>
+                
+                <h5 class="category">Category: </h5>
+
+                <% @product.categories.each do |category| %>
+                  <h6 class="category"><%= category.name.titleize %>
+                  </h6>
+                <% end %>
+                <br>
+
                 <span id="<%= @product.stock_class %>"><%= @product.in_stock? %></span>
               </div>
               <div class="col-sm-5 col-md-5">
@@ -75,6 +84,7 @@
               <div class="col-sm-12 col-md-12">
                 <br>
                 <p id="description"><%= @product.description %></p>
+
               </div>
             </div>
 
@@ -83,7 +93,7 @@
         <br>
         <div class="row">
           <div class="col-md-12">
-            <%= form_tag "/orders", method: :post do %>
+            <%= form_tag "/carted_products", method: :post do %>
               
               <div class="form-group">
                 <%= label_tag :quantity %>
@@ -91,7 +101,7 @@
                 <%= hidden_field_tag :product_id, @product.id %>
                 
                 <br>
-                <%= submit_tag " Buy", class: "btn btn-success btn-lg #{@product.buy_out_of_stock_class}" %>
+                <%= submit_tag "Add to Cart", class: "btn btn-success btn-lg #{@product.buy_out_of_stock_class}" %>
                 <!-- <span class='glyphicon glyphicon-shopping-cart'></span> -->
 
               </div>
