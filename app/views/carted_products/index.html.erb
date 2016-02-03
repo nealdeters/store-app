@@ -1,0 +1,27 @@
+<h2>Your Cart</h2>
+<table class="inventory-table">
+  <tr>
+    <th>Product ID</th>
+    <th>Product Name</th>
+    <th>Quantity</th>
+  </tr>
+<% @carted_products.each do |carted_product| %>
+  <tr>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <td><%= carted_product.product.name %></td>
+          <td><%= carted_product.quantity %></td>
+          <td><%= image_tag carted_product.image, class: "product_edit_thumbnail" %></td>
+          <td><% link_to "Delete", "/carted_products/#{carted_product.id}", class:"btn btn-danger", method: :delete %>
+            <!-- <a data-confirm="Are you sure?" data-method="remove" href="/carted_products" class="btn btn-danger">Delete</a> --></td>
+        </div>  
+      </div> 
+    </div>
+  </tr>
+
+<% end %>
+</table>
+<%= form_tag "/orders", method: :post do %>
+    <%= submit_tag "Buy Now", class: "btn btn-success btn-lg" %>
+<% end %>

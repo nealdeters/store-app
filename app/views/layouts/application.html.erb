@@ -40,6 +40,7 @@
           <% end %>
 
           <li><%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %></li>
+          <li><%= link_to "Cart", "/carted_products", method: :get, class: "glyphicon glyphicon-shopping-cart" %></li>
           <li><%= link_to "Sign In", "/users/sign_in", method: :get if !user_signed_in? %></li>
         </ul>
 

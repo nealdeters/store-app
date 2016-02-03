@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  
+  post '/search' => 'products#search'
+
   root 'products#home'
   get '/products' => 'products#index'
   get '/suppliers' => 'suppliers#index'
@@ -35,7 +38,5 @@ Rails.application.routes.draw do
   delete '/products/:id' => 'products#destroy'
   delete '/suppliers/:id' => 'suppliers#destroy'
   delete '/images/:id' => 'images#destroy'
-
-  post '/search' => 'products#search'
 
 end
