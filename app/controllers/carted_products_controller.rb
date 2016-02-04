@@ -1,4 +1,7 @@
 class CartedProductsController < ApplicationController
+  
+  before_action :authenticate_user!
+
   def index
     if user_signed_in? && current_user.carted_products.where(status: "Carted").any?
       @carted_products = current_user.carted_products.where(status: "Carted")
@@ -10,20 +13,11 @@ class CartedProductsController < ApplicationController
   end
 
   def create
-    if current_user
       @carted_product = CartedProduct.create({quantity: params[:quantity], product_id: params[:product_id], user_id: current_user.id, status: "Carted" })
 
       flash[:success] = "Added to Cart"
 
       redirect_to "/carted_products"
-    else
-      flash[:info] = "Need to sign in to add products to your cart"
-      redirect_to "/users/sign_in"
-    end
-  end
-
-  def edit
-    @carted_product = CartedProduct.find(params[:id])
   end
 
   def update

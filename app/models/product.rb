@@ -1,5 +1,16 @@
 class Product < ActiveRecord::Base
   
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :name, format: { with: /\A[a-zA-Z0-9]*\z/ }
+
+  validates :price, presence: true
+  validates :price, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }
+  validates :price, numericality: { greater_than: 0 }
+
+  validates :supplier_id, presence: true
+  validates :supplier_id, numericality: true
+
   belongs_to :supplier
 
   has_many :images
