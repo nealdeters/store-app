@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
   end
 
   def index
-    
+
+    cart_count
+
     @products = Product.all
 
     if params[:filter] && params[:filter_order]
