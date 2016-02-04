@@ -13,8 +13,7 @@
           <td><%= carted_product.product.name %></td>
           <td><%= carted_product.quantity %></td>
           <td><%= image_tag carted_product.image, class: "product_edit_thumbnail" %></td>
-          <td><% link_to "Delete", "/carted_products/#{carted_product.id}", class:"btn btn-danger", method: :delete %>
-            <!-- <a data-confirm="Are you sure?" data-method="remove" href="/carted_products" class="btn btn-danger">Delete</a> --></td>
+          <td><%= link_to "Delete", "/carted_products/#{carted_product.id}", class:"btn btn-danger", method: :delete %></td>
         </div>  
       </div> 
     </div>

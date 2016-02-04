@@ -32,13 +32,13 @@ class CartedProductsController < ApplicationController
     render :index
   end
 
-  def remove
-    @carted_product = CartedProduct.find(params[:id])
+  def destroy
+    carted_product = CartedProduct.find(params[:id])
 
-    @carted_product.status = "removed"
+    carted_product.update(status: "Removed")
 
     flash[:danger] = "Product Removed"
 
-    render :index
+    redirect_to "/carted_products"
   end
 end
