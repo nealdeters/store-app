@@ -6,4 +6,8 @@ class CartedProduct < ActiveRecord::Base
   def image
     product.images.first.image_url
   end
+
+  def subtotal
+    product.price * quantity
+  end
 end
