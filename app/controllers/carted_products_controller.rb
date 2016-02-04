@@ -10,11 +10,16 @@ class CartedProductsController < ApplicationController
   end
 
   def create
-    @carted_product = CartedProduct.create({quantity: params[:quantity], product_id: params[:product_id], user_id: current_user.id, status: "Carted" })
+    if current_user
+      @carted_product = CartedProduct.create({quantity: params[:quantity], product_id: params[:product_id], user_id: current_user.id, status: "Carted" })
 
-    flash[:success] = "Added to Cart"
+      flash[:success] = "Added to Cart"
 
-    redirect_to "/carted_products"
+      redirect_to "/carted_products"
+    else
+      flash[:info] = "Need to sign in to add products to your cart"
+      redirect_to "/users/sign_in"
+    end
   end
 
   def edit

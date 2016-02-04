@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   
+  before_action :authenticate_admin!, except: [:home, :index, :show, :random, :search]
+
   def home
     @product = Product.first 
   end
@@ -31,14 +33,21 @@ class ProductsController < ApplicationController
   end
 
   def inventory
-    @products = Product.all
-  end
-
-  def new
+    unless current_user.admin
+      redirect_to "/"
+    else
+      @products = Product.all 
+    end
     
   end
 
+  def new
+
+  end
+
   def create
+    
+
     @product = Product.create({name: params[:name], description: params[:description], price: params[:price], supplier_id: params[:supplier][:supplier_id], inventory: params[:inventory], })
 
     Image.create(image_url: params[:image], product_id: @product.id) if params[:image] != ""
